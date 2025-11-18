@@ -1,8 +1,33 @@
-import React from 'react'
+import React, { type FC } from 'react'
+import type { IList } from '../../types';
+import ActionButton from '../ActionButton/ActionButton';
+import { listsContainer } from './ListsContainer.css';
+import List from '../List/List';
 
-const ListsContainer = () => {
+type TListsContainerProps = {
+  boardId: string;
+  lists: IList[];
+}
+const ListsContainer: FC<TListsContainerProps> = ({
+  lists,
+  boardId
+}) => {
   return (
-    <div>ListsContainer</div>
+    <div className={listsContainer}>
+      {
+      lists.map(list=>(
+        <List 
+        key={list.listId}
+         list={list} 
+         boardId={boardId}
+         />
+        ))
+      }
+      <ActionButton 
+        boardId={boardId}
+        listId={""}
+        />
+    </div>
   )
 }
 
