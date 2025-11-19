@@ -9,9 +9,9 @@ type TTaskProps = {
   taskDescription: string;
 }
 const Task: FC<TTaskProps> = ({
-  index,
-  id,
-  boardId,
+  // index,
+  // id,
+  // boardId,
   taskName,
   taskDescription
 }) => {
