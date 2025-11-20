@@ -1,4 +1,4 @@
-import React, { type FC } from 'react'
+import { type FC } from 'react'
 import { GrSubtract } from 'react-icons/gr'
 import ActionButton from '../ActionButton/ActionButton'
 import type { IList, ITask } from '../../types';
@@ -8,8 +8,8 @@ import { v4 } from 'uuid';
 import { addLog } from '../../store/slices/loggerSlice';
 import { setModalData } from '../../store/slices/modalSlice';
 import { deleteButton, header, listWrapper, name } from './List.css';
-import Task from '../Task/Task';
 import { Droppable } from '@hello-pangea/dnd';
+import Task from '../Task/Task';
 
 type TListProps = {
   boardId: string;
@@ -35,7 +35,6 @@ const List: FC<TListProps> = ({
   const handleTaskChange = (
     boardId: string,
     listId: string,
-    taskId: string,
     task: ITask
   ) => {
     dispatch(setModalData({boardId, listId, task}));
@@ -58,7 +57,7 @@ const List: FC<TListProps> = ({
       </div>
       {list.tasks.map((task,index)=>(
         <div 
-        onClick={() => handleTaskChange(boardId,list.listId,task.taskId,task)}
+        onClick={() => handleTaskChange(boardId,list.listId,task)}
         key={task.taskId}
         >
           <Task

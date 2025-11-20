@@ -1,4 +1,4 @@
-import React, { type FC } from 'react'
+import { type FC } from 'react'
 import { container, description, title } from './Task.css';
 import { Draggable } from '@hello-pangea/dnd';
 
