@@ -1,25 +1,36 @@
 import React, { type FC } from 'react'
 import { container, description, title } from './Task.css';
+import { Draggable } from '@hello-pangea/dnd';
 
 type TTaskProps = {
-  index?: number;
-  id?: string;
+  index: number;
+  id: string;
   boardId?: string;
   taskName: string;
   taskDescription: string;
 }
 const Task: FC<TTaskProps> = ({
-  // index,
-  // id,
+  index,
+  id,
   // boardId,
   taskName,
   taskDescription
 }) => {
   return (
-    <div className={container}>
+    <Draggable draggableId={id} index={index}>
+      {provided =>(
+    <div
+     className={container}
+     ref={provided.innerRef}
+     {...provided.draggableProps}
+     {...provided.dragHandleProps}
+
+     >
     <div className={title}>{taskName}</div>
     <div className={description}>{taskDescription}</div>
     </div>
+    )}
+    </Draggable>
   )
 }
 
